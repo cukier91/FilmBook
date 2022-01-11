@@ -4,7 +4,7 @@ import "../App.css";
 export default function Footer() {
     return (
         <div className='footer'>
-            <p style={{marginTop:'10px'}}> Data source: https://www.themoviedb.org/</p>
+            Data source: <a target={'blank'} style={{marginTop:'10px', color:'#FFC300'}} href="https://www.themoviedb.org/"> https://www.themoviedb.org/</a> 
         </div>
     )
 }
