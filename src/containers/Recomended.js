@@ -1,16 +1,17 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React from 'react'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import "../App.css";
 import { Button, Card, Spinner, Row, Col } from "react-bootstrap";
 
-export default function ShowList() {
-	const [movies, setMovies] = useState(null);
+export default function Recomended() {
+
+    const [movies, setMovies] = useState(null);
 
 	useEffect(() => {
 		async function fetchData() {
 			const response = await axios.get(
-				`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+				`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}`
 			);
 			setMovies(response.data.results);
 		}
@@ -18,8 +19,7 @@ export default function ShowList() {
 	}, []);
 
 	console.log(movies);
-
-	if (movies === null) {
+    if (movies === null) {
 		return (
 			<div
 				style={{
