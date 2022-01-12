@@ -2,16 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container } from "react-bootstrap";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
 	return (
 		<>
-		
 			<link
 				href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat&display=swap"
 				rel="stylesheet"
 			/>
-			<div className="background"
+			<div
+				className="background"
 				style={{
 					display: "flex",
 					fontFamily: "Monoton",
@@ -26,14 +27,18 @@ export default function Nav() {
 					style={{ maxHeight: "25%", marginTop: "5%", marginLeft: "1%" }}
 					alt="Torbka"
 				/>
-				<h2 style={{ marginTop: "4%", maxWidth:'10%', marginLeft:'10px' }}>Fake Show Book</h2>
+				<Link to={"/"} style={{ marginTop: "4%", maxWidth: "10%", marginLeft: "10px", color:'#FFC300' }}>
+					<h2 >
+						Fake Show Book
+					</h2>
+				</Link>
 			</div>
 			<Navbar className="nav_bar">
 				<Container>
-					<Navbar.Brand href="/">
+					<Navbar.Brand href="/recomended">
 						<u className="nav_font">Discover this week</u>
 					</Navbar.Brand>
-					<Navbar.Brand href="/aboutus">
+					<Navbar.Brand href="/about">
 						<u className="nav_font">About this page</u>
 					</Navbar.Brand>
 					<Navbar.Brand href="/contact">
