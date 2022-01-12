@@ -48,6 +48,7 @@ export default function Contact() {
 							>
 								<Card.Title>{title}</Card.Title>
 								<Card.Text style={{ width: "22rem" }}>{description}</Card.Text>
+
 								<ListGroup>
 									<ListGroupItem>
 										Name: <b>{name}</b>

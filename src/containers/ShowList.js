@@ -1,23 +1,20 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import {fetchCurrentPlayed} from '../redux/action/movieActions'
 import axios from "axios";
 import "../App.css";
 import { Button, Card, Spinner, Row, Col } from "react-bootstrap";
 
 export default function ShowList() {
-	const [movies, setMovies] = useState(null);
+	const dispatch = useDispatch();
+	const movies = useSelector((state)=> state.moviesList)
 
 	useEffect(() => {
-		async function fetchData() {
-			const response = await axios.get(
-				`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
-			);
-			setMovies(response.data.results);
-		}
-		fetchData();
-	}, []);
+	
+		dispatch(fetchCurrentPlayed())
 
-	console.log(movies);
+	}, []);
 
 	if (movies === null) {
 		return (
@@ -47,7 +44,7 @@ export default function ShowList() {
 					background: "#02182b",
 				}}
 			>
-				{movies.map(
+				{movies.movies.map(
 					({ title, release_date, poster_path, id, vote_average }) => {
 						if (poster_path === null) {
 							return null;
