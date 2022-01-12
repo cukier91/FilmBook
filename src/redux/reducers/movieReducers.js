@@ -1,10 +1,12 @@
-import { ActionTypes } from "../const/action-types"
+import { ActionTypes } from "../const/action-types";
 
-export const movieReducer = (state=null, {type, payload}) => {
-    switch (type) {
-        case ActionTypes.FETCH_CURRENT_MOVIES:
-            return {...state, movies: payload}   
-        default:
-            return state;
-    }
-}
+export const movieReducer = (state = null, { type, payload }) => {
+	switch (type) {
+		case ActionTypes.FETCH_CURRENT_MOVIES:
+			return { ...state, movies: payload };
+		case ActionTypes.FETCH_DISCOVER_MOVIES:
+			return { ...state, movies: payload };
+		default:
+			return state;
+	}
+};

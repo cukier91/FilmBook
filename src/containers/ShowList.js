@@ -1,10 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import {useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import {fetchCurrentPlayed} from '../redux/action/movieActions'
-import axios from "axios";
 import "../App.css";
-import { Button, Card, Spinner, Row, Col } from "react-bootstrap";
+import { Card, Spinner, Row, Col } from "react-bootstrap";
 
 export default function ShowList() {
 	const dispatch = useDispatch();

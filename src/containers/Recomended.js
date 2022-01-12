@@ -1,25 +1,21 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from "react";
+import { useEffect } from "react";
+import { fetchRecomended } from "../redux/action/movieActions";
+import { useSelector, useDispatch } from "react-redux";
 import "../App.css";
-import { Button, Card, Spinner, Row, Col } from "react-bootstrap";
+import { Card, Spinner, Row, Col } from "react-bootstrap";
 
 export default function Recomended() {
-
-    const [movies, setMovies] = useState(null);
+	
+	const dispatch = useDispatch();
+	const movies = useSelector((state) => state.moviesList);
 
 	useEffect(() => {
-		async function fetchData() {
-			const response = await axios.get(
-				`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}`
-			);
-			setMovies(response.data.results);
-		}
-		fetchData();
+		dispatch(fetchRecomended());
 	}, []);
 
-	console.log(movies);
-    if (movies === null) {
+
+	if (movies === null) {
 		return (
 			<div
 				style={{
@@ -47,7 +43,7 @@ export default function Recomended() {
 					background: "#02182b",
 				}}
 			>
-				{movies.map(
+				{movies.movies.map(
 					({ title, release_date, poster_path, id, vote_average }) => {
 						if (poster_path === null) {
 							return null;
@@ -74,9 +70,13 @@ export default function Recomended() {
 											color: "white",
 										}}
 									>
-										<Card.Title style={{marginBottom:'4%'}}>{title}</Card.Title>
+										<Card.Title style={{ marginBottom: "4%" }}>
+											{title}
+										</Card.Title>
 										<Card.Title>
-											<i className="nav_font">Release date: {release_date.slice(0, 4)}</i>
+											<i className="nav_font">
+												Release date: {release_date.slice(0, 4)}
+											</i>
 										</Card.Title>
 										<Card.Title>
 											<i className="nav_font">Rate:{vote_average}/10</i>
